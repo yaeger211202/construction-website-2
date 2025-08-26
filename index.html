@@ -48,11 +48,12 @@
         </button>
       </div>
     </header>
+    <div class="nav-overlay" data-close-nav aria-hidden="true"></div>
 
     <main id="content">
       <section class="hero" aria-label="Intro">
         <div class="container hero-inner">
-          <div class="hero-content">
+          <div class="hero-content" data-reveal>
             <h1>Building resilience where land meets the sea</h1>
             <p class="lead">Ocean Infra is a modern construction company focused on high-quality marine and civil infrastructure. We deliver projects built to last — safely, sustainably, and on schedule.</p>
             <div class="cta-group">
@@ -60,37 +61,60 @@
               <a class="btn ghost" href="#contact">Get in touch</a>
             </div>
           </div>
-          <div class="hero-art" role="img" aria-label="Stylized ocean waves"></div>
+          <div class="hero-art" role="img" aria-label="Stylized ocean waves" data-reveal></div>
         </div>
         <div class="wave-divider" aria-hidden="true"></div>
       </section>
 
+      <section class="section metrics" aria-label="By the numbers">
+        <div class="container">
+          <div class="metrics-grid">
+            <div class="metric" data-reveal>
+              <div class="metric-value">15+</div>
+              <div class="metric-label">Years building infrastructure</div>
+            </div>
+            <div class="metric" data-reveal>
+              <div class="metric-value">120+</div>
+              <div class="metric-label">Projects delivered</div>
+            </div>
+            <div class="metric" data-reveal>
+              <div class="metric-value">24/7</div>
+              <div class="metric-label">Marine capability</div>
+            </div>
+            <div class="metric" data-reveal>
+              <div class="metric-value">100%</div>
+              <div class="metric-label">Client-first approach</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section id="about" class="section section-alt">
         <div class="container grid two">
-          <div>
+          <div data-reveal>
             <h2>About Ocean Infra</h2>
             <p>We are builders at heart and partners in delivery. Our teams bring decades of experience across coastal protection, ports and harbors, bridges, highways, and urban infrastructure. We combine craft with technology to deliver high-performing assets — from seabed to skyline.</p>
             <p>This is placeholder content. Share your company story and values and we will tailor this section to suit your voice and brand.</p>
           </div>
-          <div class="about-card" aria-hidden="true"></div>
+          <div class="about-card" aria-hidden="true" data-reveal></div>
         </div>
       </section>
 
       <section id="services" class="section">
         <div class="container">
-          <h2>Services</h2>
+          <h2 data-reveal>Services</h2>
           <div class="cards">
-            <article class="card">
+            <article class="card" data-reveal>
               <div class="card-icon" aria-hidden="true">🌊</div>
               <h3>Marine Construction</h3>
               <p>Piers, breakwaters, seawalls, dredging, and coastal defenses engineered for changing seas.</p>
             </article>
-            <article class="card">
+            <article class="card" data-reveal>
               <div class="card-icon" aria-hidden="true">🏗️</div>
               <h3>Civil Infrastructure</h3>
               <p>Bridges, roads, and utilities built with precision, safety, and long-term performance.</p>
             </article>
-            <article class="card">
+            <article class="card" data-reveal>
               <div class="card-icon" aria-hidden="true">📐</div>
               <h3>Project Delivery</h3>
               <p>Design–build, EPC, and construction management powered by data-driven controls.</p>
@@ -99,25 +123,38 @@
         </div>
       </section>
 
+      <section class="section clients section-alt" aria-label="Clients">
+        <div class="container">
+          <h2 data-reveal>Trusted by project partners</h2>
+          <div class="logos" aria-hidden="true">
+            <div class="logo" data-reveal>Client A</div>
+            <div class="logo" data-reveal>Client B</div>
+            <div class="logo" data-reveal>Client C</div>
+            <div class="logo" data-reveal>Client D</div>
+            <div class="logo" data-reveal>Client E</div>
+          </div>
+        </div>
+      </section>
+
       <section id="projects" class="section section-alt">
         <div class="container">
-          <h2>Featured Projects</h2>
+          <h2 data-reveal>Featured Projects</h2>
           <div class="project-grid">
-            <article class="project">
+            <article class="project" data-reveal>
               <div class="project-media" aria-hidden="true"></div>
               <div class="project-body">
                 <h3>Harbor Reinforcement</h3>
                 <p>Seawall upgrades and berth expansion completed ahead of hurricane season.</p>
               </div>
             </article>
-            <article class="project">
+            <article class="project" data-reveal>
               <div class="project-media" aria-hidden="true"></div>
               <div class="project-body">
                 <h3>Coastal Highway Bridge</h3>
                 <p>Segmental bridge spanning tidal flats with minimal environmental footprint.</p>
               </div>
             </article>
-            <article class="project">
+            <article class="project" data-reveal>
               <div class="project-media" aria-hidden="true"></div>
               <div class="project-body">
                 <h3>Urban Resilience Works</h3>
@@ -128,9 +165,17 @@
         </div>
       </section>
 
+      <section class="section cta-band" aria-label="Call to action">
+        <div class="container cta-inner" data-reveal>
+          <h2>Ready to build with confidence?</h2>
+          <p>Let's scope your project and get a plan in motion.</p>
+          <a class="btn primary" href="#contact">Start a conversation</a>
+        </div>
+      </section>
+
       <section id="contact" class="section">
         <div class="container grid two">
-          <div>
+          <div data-reveal>
             <h2>Contact</h2>
             <p>Tell us about your project and timelines. We will respond within one business day.</p>
             <form class="contact-form" action="#" method="post">
@@ -149,7 +194,7 @@
               <button class="btn primary" type="submit">Send message</button>
             </form>
           </div>
-          <div>
+          <div data-reveal>
             <div class="contact-card">
               <h3>Reach us</h3>
               <ul class="contact-list">
