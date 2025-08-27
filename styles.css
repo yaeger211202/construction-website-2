@@ -135,8 +135,8 @@ body {
   width: 42px;
   height: 42px;
   border-radius: 10px;
-  border: 1px solid var(--ink-100);
-  background: #fff;
+  border: 1px solid var(--brand-700);
+  background: var(--brand-600);
   align-items: center;
   justify-content: center;
   gap: 4px;
@@ -145,8 +145,10 @@ body {
   display: block;
   width: 20px;
   height: 2px;
-  background: var(--ink-900);
+  background: #ffffff;
 }
+.nav-toggle:hover { background: var(--brand-500); }
+.site-header.open .nav-toggle { background: var(--brand-500); border-color: var(--brand-600); }
 
 /* Hero */
 .hero {
