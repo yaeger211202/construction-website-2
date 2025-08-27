@@ -197,7 +197,7 @@ body {
   right: 0;
   bottom: -1px;
   height: 80px;
-  background: url('/assets/waves.svg') repeat-x bottom center / 800px 80px;
+  background: url('/assets/waves.svg?v=dark-2') repeat-x bottom center / 800px 80px;
   animation: waveScroll 18s linear infinite;
 }
 @keyframes waveScroll {
