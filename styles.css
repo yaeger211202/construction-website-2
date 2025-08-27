@@ -104,6 +104,10 @@ body {
 }
 .brand-mark {
   display: block;
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+  border-radius: 8px;
 }
 .brand-name {
   font-weight: 700;
