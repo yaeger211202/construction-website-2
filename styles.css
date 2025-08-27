@@ -1,13 +1,13 @@
 :root {
-  --brand-900: #072d44;
-  --brand-800: #0a405f;
-  --brand-700: #0c5380;
-  --brand-600: #0a6aa1;
-  --brand-500: #0a86c2;
-  --brand-400: #2aa6de;
-  --brand-300: #6cc6ef;
-  --brand-200: #a9e1fb;
-  --brand-100: #e6f6ff;
+  --brand-900: #000000;
+  --brand-800: #000000;
+  --brand-700: #000305;
+  --brand-600: #041f34;
+  --brand-500: #063050;
+  --brand-400: #08416d;
+  --brand-300: #0b5793;
+  --brand-200: #0f74c2;
+  --brand-100: #178fed;
   --ink-900: #0f172a;
   --ink-700: #334155;
   --ink-500: #475569;
@@ -107,7 +107,6 @@ body {
   width: 36px;
   height: 36px;
   object-fit: contain;
-  border-radius: 8px;
 }
 .brand-name {
   font-weight: 700;
