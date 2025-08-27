@@ -317,6 +317,30 @@ h3 {
   border: 1px solid var(--brand-700);
   box-shadow: var(--shadow-sm);
 }
+.promoters { margin-top: 28px; }
+.promoter-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+.promoter {
+  background: #0b2742;
+  border: 1px solid var(--brand-700);
+  border-radius: var(--radius);
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 140px 1fr;
+}
+.promoter img {
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+}
+.promoter-body {
+  padding: 12px 14px;
+}
+.promoter-body h4 { margin: 0 0 6px; }
+.promoter-body p { margin: 0 0 8px; color: #c8d5e8; }
 .clients .logos {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -481,6 +505,7 @@ h3 {
     grid-template-columns: 1fr 1fr;
   }
   .energy-media-grid img { height: 180px; }
+  .promoter-grid { grid-template-columns: 1fr; }
 }
 
 /* Reduced motion */
