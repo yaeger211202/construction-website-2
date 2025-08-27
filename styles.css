@@ -95,6 +95,18 @@ body {
   justify-content: space-between;
   height: 72px;
 }
+.header-social {
+  display: inline-flex;
+  width: 36px;
+  height: 36px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  border: 1px solid var(--brand-700);
+  background: var(--brand-600);
+  margin-left: 10px;
+}
+.site-header.scrolled .header-social { background: var(--brand-600); }
 .brand {
   display: inline-flex;
   align-items: center;
@@ -535,6 +547,7 @@ h3 {
   .nav-toggle {
     display: inline-flex;
   }
+  .header-social { order: 3; margin-left: 8px; }
   .cards, .project-grid {
     grid-template-columns: 1fr;
   }
