@@ -8,13 +8,13 @@
   --brand-300: #0b5793;
   --brand-200: #0f74c2;
   --brand-100: #178fed;
-  --ink-900: #0f172a;
-  --ink-700: #334155;
-  --ink-500: #475569;
-  --ink-300: #94a3b8;
-  --ink-200: #cbd5e1;
-  --ink-100: #e2e8f0;
-  --bg: #f8fafc;
+  --ink-900: #e6eef8;
+  --ink-700: #c8d5e8;
+  --ink-500: #a8bdd7;
+  --ink-300: #86a4c2;
+  --ink-200: #6d8fb2;
+  --ink-100: #2a5d8d;
+  --bg: #031624;
   --radius: 14px;
   --shadow-sm: 0 1px 2px rgba(2, 18, 38, 0.06);
   --shadow-md: 0 10px 30px rgba(2, 18, 38, 0.08);
@@ -32,7 +32,7 @@ body {
   margin: 0;
   font-family: 'Plus Jakarta Sans', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, 'Apple Color Emoji', 'Segoe UI Emoji';
   color: var(--ink-900);
-  background: var(--bg);
+  background: linear-gradient(180deg, #020f1a, #051a2b 40%, #041f34 100%);
   line-height: 1.6;
 }
 
@@ -85,7 +85,7 @@ body {
   pointer-events: auto;
 }
 .site-header.scrolled {
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(4, 31, 52, 0.75);
   backdrop-filter: saturate(140%) blur(10px);
   box-shadow: var(--shadow-sm);
 }
@@ -210,10 +210,10 @@ body {
   padding-block: 72px;
 }
 .section-alt {
-  background: #ffffff;
+  background: #061b2c;
 }
 .metrics {
-  background: linear-gradient(180deg, #ffffff, #f3f8fc);
+  background: linear-gradient(180deg, #051a2b, #072338);
 }
 .metrics-grid {
   display: grid;
@@ -221,8 +221,8 @@ body {
   gap: 16px;
 }
 .metric {
-  background: #ffffff;
-  border: 1px solid var(--ink-100);
+  background: #0b2742;
+  border: 1px solid var(--brand-700);
   border-radius: var(--radius);
   padding: 18px;
   text-align: center;
@@ -254,9 +254,9 @@ h3 {
   height: 260px;
   border-radius: var(--radius);
   background:
-    radial-gradient(120px 80px at 80% 30%, rgba(10, 134, 194, 0.15), transparent 60%),
-    linear-gradient(135deg, var(--brand-100), #ffffff 60%);
-  border: 1px solid var(--ink-100);
+    radial-gradient(120px 80px at 80% 30%, rgba(23, 143, 237, 0.1), transparent 60%),
+    linear-gradient(135deg, #072338, #051a2b 60%);
+  border: 1px solid var(--brand-700);
 }
 
 .cards {
@@ -265,8 +265,8 @@ h3 {
   grid-template-columns: repeat(3, 1fr);
 }
 .card {
-  background: #ffffff;
-  border: 1px solid var(--ink-100);
+  background: #0b2742;
+  border: 1px solid var(--brand-700);
   border-radius: var(--radius);
   padding: 18px;
   box-shadow: var(--shadow-sm);
@@ -288,8 +288,8 @@ h3 {
   grid-template-columns: repeat(3, 1fr);
 }
 .project {
-  background: #ffffff;
-  border: 1px solid var(--ink-100);
+  background: #0b2742;
+  border: 1px solid var(--brand-700);
   border-radius: var(--radius);
   overflow: hidden;
   box-shadow: var(--shadow-sm);
@@ -297,8 +297,8 @@ h3 {
 .project-media {
   height: 160px;
   background:
-    radial-gradient(160px 80px at 70% 30%, rgba(42, 166, 222, 0.2), transparent 60%),
-    linear-gradient(180deg, var(--brand-200), #ffffff);
+    radial-gradient(160px 80px at 70% 30%, rgba(23, 143, 237, 0.18), transparent 60%),
+    linear-gradient(180deg, var(--brand-700), var(--brand-600));
 }
 .project-body {
   padding: 16px 16px 18px;
@@ -309,12 +309,12 @@ h3 {
   gap: 16px;
 }
 .clients .logo {
-  background: #ffffff;
-  border: 1px dashed var(--brand-200);
+  background: #0b2742;
+  border: 1px dashed var(--brand-300);
   border-radius: calc(var(--radius) - 4px);
   padding: 14px;
   text-align: center;
-  color: var(--ink-300);
+  color: var(--ink-500);
 }
 
 .cta-band {
@@ -329,8 +329,8 @@ h3 {
 }
 
 .contact-card {
-  background: #ffffff;
-  border: 1px solid var(--ink-100);
+  background: #0b2742;
+  border: 1px solid var(--brand-700);
   border-radius: var(--radius);
   padding: 18px;
 }
@@ -352,9 +352,10 @@ h3 {
 .contact-form textarea {
   font: inherit;
   padding: 10px 12px;
-  border: 1px solid var(--ink-100);
+  border: 1px solid #0f3a5a;
   border-radius: 10px;
-  background: #fff;
+  background: #0a223a;
+  color: var(--ink-900);
 }
 .contact-form input:focus,
 .contact-form textarea:focus {
@@ -407,8 +408,8 @@ h3 {
 /* Footer */
 .site-footer {
   padding: 28px 0;
-  background: #ffffff;
-  border-top: 1px solid var(--ink-100);
+  background: #041523;
+  border-top: 1px solid var(--brand-700);
 }
 .footer-inner {
   display: flex;
@@ -440,7 +441,7 @@ h3 {
   .primary-nav {
     position: fixed;
     inset: 72px 0 auto 0;
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(4, 31, 52, 0.98);
     backdrop-filter: saturate(140%) blur(10px);
     transform: translateY(-12px);
     opacity: 0;
