@@ -31,7 +31,7 @@ html {
 body {
   margin: 0;
   font-family: 'Plus Jakarta Sans', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, 'Apple Color Emoji', 'Segoe UI Emoji';
-  color: var(--ink-900);
+  color: #ffffff;
   background: linear-gradient(180deg, #020f1a, #051a2b 40%, #041f34 100%);
   line-height: 1.6;
 }
@@ -211,6 +211,7 @@ body {
 }
 .section-alt {
   background: #061b2c;
+  color: #ffffff;
 }
 .metrics {
   background: linear-gradient(180deg, #051a2b, #072338);
@@ -234,7 +235,7 @@ body {
   color: var(--brand-700);
 }
 .metric-label {
-  color: var(--ink-500);
+  color: #d2e2f7;
 }
 h2 {
   font-size: clamp(22px, 2.6vw, 32px);
@@ -314,7 +315,7 @@ h3 {
   border-radius: calc(var(--radius) - 4px);
   padding: 14px;
   text-align: center;
-  color: var(--ink-500);
+  color: #c8d5e8;
 }
 
 .cta-band {
