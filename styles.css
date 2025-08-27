@@ -127,7 +127,7 @@ body {
   font-weight: 500;
 }
 .primary-nav a:hover {
-  color: var(--brand-600);
+  color: var(--brand-400);
 }
 
 .nav-toggle {
@@ -151,7 +151,7 @@ body {
 /* Hero */
 .hero {
   position: relative;
-  background: linear-gradient(180deg, var(--brand-700), var(--brand-600));
+  background: linear-gradient(180deg, var(--brand-800), var(--brand-600));
   color: #fff;
 }
 .hero::before {
@@ -187,9 +187,9 @@ body {
   border-radius: var(--radius);
   box-shadow: var(--shadow-md);
   background:
-    radial-gradient(120px 60px at 70% 40%, rgba(255,255,255,0.25), transparent 60%),
-    radial-gradient(140px 70px at 40% 65%, rgba(255,255,255,0.18), transparent 60%),
-    linear-gradient(200deg, #5cc2f3 0%, #0a86c2 45%, #0c5380 100%);
+    radial-gradient(120px 60px at 70% 40%, rgba(255,255,255,0.20), transparent 60%),
+    radial-gradient(140px 70px at 40% 65%, rgba(255,255,255,0.14), transparent 60%),
+    linear-gradient(200deg, var(--brand-300) 0%, var(--brand-500) 45%, var(--brand-700) 100%);
 }
 .wave-divider {
   position: absolute;
@@ -276,6 +276,7 @@ h3 {
 .card:hover {
   transform: translateY(-4px);
   box-shadow: var(--shadow-md);
+  border-color: var(--brand-200);
 }
 .card-icon {
   font-size: 24px;
@@ -309,7 +310,7 @@ h3 {
 }
 .clients .logo {
   background: #ffffff;
-  border: 1px dashed var(--ink-100);
+  border: 1px dashed var(--brand-200);
   border-radius: calc(var(--radius) - 4px);
   padding: 14px;
   text-align: center;
@@ -374,21 +375,22 @@ h3 {
   transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease, color 180ms ease;
 }
 .btn.primary {
-  background: #ffffff;
-  color: var(--brand-700);
+  background: var(--brand-600);
+  color: #ffffff;
   box-shadow: var(--shadow-sm);
 }
 .btn.primary:hover {
   transform: translateY(-1px);
   box-shadow: var(--shadow-md);
+  background: var(--brand-500);
 }
 .btn.ghost {
   background: transparent;
   color: #fff;
-  border-color: rgba(255,255,255,0.4);
+  border-color: rgba(255,255,255,0.5);
 }
 .btn.ghost:hover {
-  background: rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.12);
 }
 
 /* Reveal animations */
@@ -414,7 +416,7 @@ h3 {
   justify-content: space-between;
 }
 .back-to-top {
-  color: var(--brand-600);
+  color: var(--brand-400);
   text-decoration: none;
 }
 
