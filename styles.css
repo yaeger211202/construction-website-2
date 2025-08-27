@@ -410,6 +410,9 @@ h3 {
 .contact-list li + li {
   margin-top: 8px;
 }
+.social-icons { display: flex; gap: 10px; margin-top: 12px; }
+.social-icons a { display: inline-flex; width: 28px; height: 28px; align-items: center; justify-content: center; border: 1px solid var(--brand-700); border-radius: 8px; background: #0a223a; }
+.social-icons img { width: 18px; height: 18px; display: block; }
 
 .contact-form .form-row {
   display: grid;
