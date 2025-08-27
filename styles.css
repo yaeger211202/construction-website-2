@@ -489,6 +489,10 @@ h3 {
   .metrics-grid {
     grid-template-columns: 1fr 1fr;
   }
+  .hero-media {
+    height: 52vw;
+    min-height: 220px;
+  }
 }
 
 @media (max-width: 720px) {
@@ -523,6 +527,16 @@ h3 {
   .energy-media-grid img { height: 180px; }
   .promoter { grid-template-columns: 1fr; }
   .promoter img { min-height: 300px; }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+  .section { padding-block: 48px; }
+  .metrics-grid, .clients .logos { grid-template-columns: 1fr; }
+  .energy-media-grid img { height: 160px; }
+  .promoter img { min-height: 240px; }
+  .cta-group { flex-direction: column; align-items: stretch; }
+  .hero-media::after { background: linear-gradient(180deg, rgba(3,22,36,0.35), rgba(3,22,36,0.7)); }
 }
 
 /* Reduced motion */
