@@ -39,6 +39,51 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Chat widget behavior
+  const chatFab = document.getElementById('chat-fab');
+  const chatPanel = document.getElementById('chat-panel');
+  const chatClose = document.getElementById('chat-close');
+  const chatSend = document.getElementById('chat-send');
+  const chatMessage = document.getElementById('chat-message');
+  const chatName = document.getElementById('chat-name');
+  const chatPhone = document.getElementById('chat-phone');
+  const chatStatus = document.getElementById('chat-status');
+
+  const setChatOpen = (open) => {
+    if (!chatPanel || !chatFab) return;
+    chatPanel.classList.toggle('open', open);
+    chatFab.setAttribute('aria-expanded', open ? 'true' : 'false');
+  };
+
+  chatFab?.addEventListener('click', () => {
+    const open = !chatPanel?.classList.contains('open');
+    setChatOpen(open);
+  });
+  chatClose?.addEventListener('click', () => setChatOpen(false));
+
+  chatSend?.addEventListener('click', async () => {
+    if (!chatMessage?.value.trim()) {
+      chatStatus.textContent = 'Please enter a message.';
+      return;
+    }
+    chatStatus.textContent = 'Sending...';
+    try {
+      const res = await fetch('/api/notify', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          message: chatMessage.value,
+          name: chatName?.value || '',
+          phone: chatPhone?.value || ''
+        })
+      });
+      if (!res.ok) throw new Error('Failed');
+      chatStatus.textContent = 'Sent! We will contact you soon.';
+      chatMessage.value = '';
+    } catch (e) {
+      chatStatus.textContent = 'Could not send. Please try again later.';
+    }
+  });
   // Scroll reveal animations
   const revealElements = Array.from(document.querySelectorAll('[data-reveal]'));
   if ('IntersectionObserver' in window && revealElements.length > 0) {

@@ -1,6 +1,9 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
+  "routes": [
+    { "src": "/api/notify", "dest": "/api/notify.js" }
+  ],
   "headers": [
     {
       "source": "/(.*)\\.(css|js|svg)",

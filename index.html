@@ -16,7 +16,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="/styles.css?v=gallery-1" />
+    <link rel="stylesheet" href="/styles.css?v=chat-1" />
     <title>Ocean Infra — Building Resilient Infrastructure</title>
     <script>
       document.documentElement.classList.remove('no-js');
@@ -284,6 +284,34 @@
           </div>
         </div>
       </section>
+
+      <!-- Chat widget -->
+      <div class="chat-widget" aria-live="polite">
+        <button class="chat-fab" id="chat-fab" aria-haspopup="dialog" aria-expanded="false" aria-controls="chat-panel" title="Chat with Ocean Infra">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M20 2H4a2 2 0 0 0-2 2v16l4-4h14a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2Z" stroke="#ffffff" stroke-width="1.6" fill="none"/>
+            <circle cx="8" cy="10" r="1.2" fill="#ffffff"/>
+            <circle cx="12" cy="10" r="1.2" fill="#ffffff"/>
+            <circle cx="16" cy="10" r="1.2" fill="#ffffff"/>
+          </svg>
+        </button>
+        <div class="chat-panel" id="chat-panel" role="dialog" aria-modal="false" aria-label="Chat with Ocean Infra">
+          <div class="chat-header">
+            <div class="chat-title">Virtual Assistant</div>
+            <button class="chat-close" id="chat-close" aria-label="Close chat">×</button>
+          </div>
+          <div class="chat-body">
+            <label class="chat-label" for="chat-message">Your message</label>
+            <textarea id="chat-message" class="chat-input" rows="3" placeholder="Type your message..." required></textarea>
+            <div class="chat-row">
+              <input id="chat-name" class="chat-input" type="text" placeholder="Name (optional)" />
+              <input id="chat-phone" class="chat-input" type="tel" placeholder="Phone (optional)" />
+            </div>
+            <button id="chat-send" class="btn primary chat-send">Send</button>
+            <div class="chat-status" id="chat-status" aria-live="polite"></div>
+          </div>
+        </div>
+      </div>
     </main>
 
     <footer class="site-footer">
@@ -293,7 +321,7 @@
       </div>
     </footer>
 
-    <script src="/script.js?v=dark-2" defer></script>
+    <script src="/script.js?v=chat-1" defer></script>
   </body>
   </html>
 

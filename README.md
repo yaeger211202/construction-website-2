@@ -15,6 +15,15 @@ Built with HTML, CSS, and vanilla JS. Ideal for Vercel static hosting.
 
 Vercel will serve `index.html` from the repo root.
 
+## Chat widget notifications (Telegram)
+
+Set Vercel Environment Variables:
+- `TELEGRAM_BOT_TOKEN`: token from BotFather
+- `TELEGRAM_CHAT_ID`: your Telegram chat ID (or group/channel ID where the bot is added)
+
+Endpoint: `/api/notify` (serverless function)
+Client: floating chat widget in the bottom-right corner.
+
 ## Files
 
 - `index.html` — page markup
