@@ -1,0 +1,20 @@
+{
+  "name": "workspace",
+  "version": "1.0.0",
+  "description": "Modern, mobile-first landing site for Ocean Infra. Built with HTML, CSS, and vanilla JS. Ideal for Vercel static hosting.",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yaeger211202/construction-website-2.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yaeger211202/construction-website-2/issues"
+  },
+  "homepage": "https://github.com/yaeger211202/construction-website-2#readme"
+}

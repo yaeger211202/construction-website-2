@@ -1,0 +1,258 @@
+<mxfile host="app.diagrams.net" modified="2025-09-19T00:00:00.000Z" agent="AI-GPT" version="24.7.8" editor="www.diagrams.net" type="device">
+  <diagram id="eer" name="EER">
+    <mxGraphModel dx="2000" dy="2000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="3500" pageHeight="2200" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        
+        <!-- Top Row (Core) -->
+        <mxCell id="project" value="Project&#xa;PK: project_id (UUID)&#xa;name (TEXT)&#xa;start_date (DATE)&#xa;end_date (DATE)&#xa;status (ENUM)" style="shape=rectangle;whiteSpace=wrap;html=1;rounded=0;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="100" y="60" width="240" height="180" as="geometry"/>
+        </mxCell>
+        <mxCell id="masterbudget" value="MasterBudget&#xa;PK: budget_id (UUID)&#xa;FK: project_id → Project (UNIQUE)&#xa;baseline_total (DECIMAL)&#xa;currency (TEXT)&#xa;active (BOOL)" style="shape=rectangle;whiteSpace=wrap;html=1;rounded=0;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="380" y="60" width="240" height="180" as="geometry"/>
+        </mxCell>
+        <mxCell id="workpackage" value="WorkPackage&#xa;PK: wp_id (UUID)&#xa;FK: project_id → Project&#xa;name (TEXT)&#xa;planned_value (DECIMAL)" style="shape=rectangle;whiteSpace=wrap;html=1;rounded=0;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="660" y="60" width="240" height="160" as="geometry"/>
+        </mxCell>
+        <mxCell id="task" value="Task&#xa;PK: task_id (UUID)&#xa;FK: wp_id → WorkPackage&#xa;FK: predecessor_task_id → Task (NULL)&#xa;name (TEXT)&#xa;planned_start (DATE)&#xa;planned_finish (DATE)&#xa;percent_complete (INT)" style="shape=rectangle;whiteSpace=wrap;html=1;rounded=0;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="940" y="60" width="260" height="200" as="geometry"/>
+        </mxCell>
+        <mxCell id="milestone" value="Milestone&#xa;PK: milestone_id (UUID)&#xa;FK: project_id → Project&#xa;name (TEXT)&#xa;target_date (DATE)&#xa;is_critical (BOOL)" style="shape=rectangle;whiteSpace=wrap;html=1;rounded=0;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="1220" y="60" width="240" height="160" as="geometry"/>
+        </mxCell>
+        <mxCell id="costcode" value="CostCode&#xa;PK: costcode_id (UUID)&#xa;FK: project_id → Project&#xa;FK: parent_costcode_id → CostCode (NULL)&#xa;code (TEXT)&#xa;description (TEXT)" style="shape=rectangle;whiteSpace=wrap;html=1;rounded=0;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="1500" y="60" width="260" height="180" as="geometry"/>
+        </mxCell>
+
+        <!-- Row 2 (Field Control / Docs) -->
+        <mxCell id="inspection" value="Inspection&#xa;PK: inspection_id (UUID)&#xa;FK: project_id → Project&#xa;FK: site_id → Site&#xa;FK: task_id → Task (NULL)&#xa;type (TEXT)&#xa;result (TEXT)&#xa;date (DATE)" style="shape=rectangle;whiteSpace=wrap;html=1;rounded=0;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="380" y="280" width="260" height="200" as="geometry"/>
+        </mxCell>
+        <mxCell id="issue" value="Issue&#xa;PK: issue_id (UUID)&#xa;FK: project_id → Project&#xa;FK: task_id → Task (NULL)&#xa;FK: site_id → Site (NULL)&#xa;severity (ENUM)&#xa;opened_on (DATE)&#xa;closed_on (DATE NULL)&#xa;status (ENUM)" style="shape=rectangle;whiteSpace=wrap;html=1;rounded=0;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="660" y="280" width="260" height="220" as="geometry"/>
+        </mxCell>
+        <mxCell id="rfi" value="RFI&#xa;PK: rfi_id (UUID)&#xa;FK: project_id → Project&#xa;FK: task_id → Task (NULL)&#xa;FK: raised_by → Employee&#xa;question (TEXT)&#xa;response (TEXT)&#xa;status (ENUM)" style="shape=rectangle;whiteSpace=wrap;html=1;rounded=0;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="940" y="280" width="260" height="200" as="geometry"/>
+        </mxCell>
+        <mxCell id="document" value="Document&#xa;PK: document_id (UUID)&#xa;FK: project_id → Project&#xa;FK: task_id → Task (NULL)&#xa;FK: inspection_id → Inspection (NULL)&#xa;FK: rfi_id → RFI (NULL)&#xa;title (TEXT)&#xa;doc_type (ENUM)&#xa;version (INT)&#xa;current (BOOL)&#xa;file_uri (URI)" style="shape=rectangle;whiteSpace=wrap;html=1;rounded=0;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="1220" y="280" width="300" height="240" as="geometry"/>
+        </mxCell>
+        <mxCell id="permit" value="Permit&#xa;PK: permit_id (UUID)&#xa;FK: project_id → Project&#xa;FK: site_id → Site (NULL)&#xa;FK: task_id → Task (NULL)&#xa;authority (TEXT)&#xa;number (TEXT)&#xa;issued_on (DATE)&#xa;expires_on (DATE)&#xa;status (ENUM)" style="shape=rectangle;whiteSpace=wrap;html=1;rounded=0;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="1550" y="280" width="260" height="220" as="geometry"/>
+        </mxCell>
+
+        <!-- Left (Organizations / ISA) -->
+        <mxCell id="company" value="Company&#xa;PK: company_id (UUID)&#xa;legal_name (TEXT)&#xa;type (ENUM)&#xa;tax_id (TEXT)" style="shape=rectangle;whiteSpace=wrap;html=1;rounded=0;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="100" y="280" width="240" height="160" as="geometry"/>
+        </mxCell>
+        <mxCell id="clientcompany" value="ClientCompany&#xa;PK/FK: company_id → Company&#xa;billing_contact (TEXT)" style="shape=rectangle;whiteSpace=wrap;html=1;rounded=0;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="100" y="460" width="240" height="120" as="geometry"/>
+        </mxCell>
+        <mxCell id="subcontractor" value="Subcontractor&#xa;PK/FK: company_id → Company&#xa;trade (TEXT)&#xa;insurance_expiry (DATE)" style="shape=rectangle;whiteSpace=wrap;html=1;rounded=0;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="100" y="640" width="240" height="140" as="geometry"/>
+        </mxCell>
+        <mxCell id="supplier" value="Supplier&#xa;PK/FK: company_id → Company&#xa;catalog_url (URL)&#xa;preferred (BOOL)" style="shape=rectangle;whiteSpace=wrap;html=1;rounded=0;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="100" y="820" width="240" height="140" as="geometry"/>
+        </mxCell>
+        <!-- ISA Triangle -->
+        <mxCell id="isa_triangle" value="" style="shape=triangle;direction=north;size=20;strokeColor=#000000;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="180" y="430" width="80" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="isa_company_to_triangle" edge="1" parent="1" source="company" target="isa_triangle" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;endArrow=classic;endFill=1;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="isa_triangle_to_client" edge="1" parent="1" source="isa_triangle" target="clientcompany" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;endArrow=classic;endFill=1;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="isa_triangle_to_sub" edge="1" parent="1" source="isa_triangle" target="subcontractor" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;endArrow=classic;endFill=1;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="isa_triangle_to_supplier" edge="1" parent="1" source="isa_triangle" target="supplier" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;endArrow=classic;endFill=1;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Center (Contracts & Changes) -->
+        <mxCell id="contract" value="Contract&#xa;PK: contract_id (UUID)&#xa;FK: project_id → Project&#xa;FK: subcontractor_id → Company(Subcontractor) (NULL)&#xa;FK: client_id → Company(ClientCompany) (NULL)&#xa;value (DECIMAL)&#xa;retainage_pct (DECIMAL)&#xa;status (ENUM)" style="shape=rectangle;whiteSpace=wrap;html=1;rounded=0;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="660" y="460" width="300" height="220" as="geometry"/>
+        </mxCell>
+        <mxCell id="changeorder" value="ChangeOrder&#xa;PK: co_id (UUID)&#xa;FK: contract_id → Contract&#xa;FK: wp_id → WorkPackage (NULL)&#xa;amount (DECIMAL)&#xa;schedule_days (INT)&#xa;reason (TEXT)&#xa;status (ENUM)" style="shape=rectangle;whiteSpace=wrap;html=1;rounded=0;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="980" y="460" width="260" height="200" as="geometry"/>
+        </mxCell>
+
+        <!-- Right-center (Procurement) -->
+        <mxCell id="purchaseorder" value="PurchaseOrder&#xa;PK: po_id (UUID)&#xa;FK: project_id → Project&#xa;FK: supplier_id → Company(Supplier)&#xa;ordered_on (DATE)&#xa;status (ENUM)&#xa;total (DECIMAL)" style="shape=rectangle;whiteSpace=wrap;html=1;rounded=0;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="1260" y="460" width="260" height="200" as="geometry"/>
+        </mxCell>
+        <mxCell id="polineitem" value="POLineItem (weak/associative)&#xa;PK: po_id + line_no&#xa;FK: po_id → PurchaseOrder&#xa;FK: material_id → Material&#xa;FK: costcode_id → CostCode&#xa;qty (DECIMAL)&#xa;unit_price (DECIMAL)&#xa;description (TEXT)" style="shape=rectangle;whiteSpace=wrap;html=1;rounded=0;shadow=0;dashed=1;dashPattern=4 4;" vertex="1" parent="1">
+          <mxGeometry x="1540" y="460" width="300" height="220" as="geometry"/>
+        </mxCell>
+        <mxCell id="material" value="Material&#xa;PK: material_id (UUID)&#xa;name (TEXT)&#xa;unit (TEXT)&#xa;spec_no (TEXT)&#xa;requires_submittal (BOOL)" style="shape=rectangle;whiteSpace=wrap;html=1;rounded=0;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="1860" y="460" width="260" height="200" as="geometry"/>
+        </mxCell>
+        <mxCell id="taskmaterial" value="TaskMaterial (weak/associative)&#xa;PK: task_id + material_id&#xa;FK: task_id → Task&#xa;FK: material_id → Material&#xa;qty_used (DECIMAL)&#xa;date_used (DATE)" style="shape=rectangle;whiteSpace=wrap;html=1;rounded=0;shadow=0;dashed=1;dashPattern=4 4;" vertex="1" parent="1">
+          <mxGeometry x="1860" y="680" width="280" height="180" as="geometry"/>
+        </mxCell>
+
+        <!-- Bottom-left (Labor & Equipment) -->
+        <mxCell id="employee" value="Employee&#xa;PK: employee_id (UUID)&#xa;FK: company_id → Company&#xa;first_name (TEXT)&#xa;last_name (TEXT)&#xa;role (TEXT)" style="shape=rectangle;whiteSpace=wrap;html=1;rounded=0;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="380" y="640" width="260" height="180" as="geometry"/>
+        </mxCell>
+        <mxCell id="timesheet" value="Timesheet&#xa;PK: timesheet_id (UUID)&#xa;FK: employee_id → Employee&#xa;FK: task_id → Task&#xa;FK: costcode_id → CostCode&#xa;work_date (DATE)&#xa;hours (DECIMAL)&#xa;approved_by → Employee" style="shape=rectangle;whiteSpace=wrap;html=1;rounded=0;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="660" y="640" width="280" height="200" as="geometry"/>
+        </mxCell>
+        <mxCell id="equipment" value="Equipment&#xa;PK: equipment_id (UUID)&#xa;name (TEXT)&#xa;owner (ENUM: Owned,Rented)&#xa;daily_rate (DECIMAL)&#xa;status (ENUM)" style="shape=rectangle;whiteSpace=wrap;html=1;rounded=0;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="380" y="840" width="260" height="180" as="geometry"/>
+        </mxCell>
+        <mxCell id="taskequipment" value="TaskEquipment (weak/associative)&#xa;PK: task_id + equipment_id&#xa;FK: task_id → Task&#xa;FK: equipment_id → Equipment&#xa;assigned_from (DATE)&#xa;assigned_to (DATE)" style="shape=rectangle;whiteSpace=wrap;html=1;rounded=0;shadow=0;dashed=1;dashPattern=4 4;" vertex="1" parent="1">
+          <mxGeometry x="660" y="840" width="300" height="180" as="geometry"/>
+        </mxCell>
+
+        <!-- Bottom-right (Finance) -->
+        <mxCell id="invoice" value="Invoice&#xa;PK: invoice_id (UUID)&#xa;FK: contract_id → Contract (NULL)&#xa;FK: po_id → PurchaseOrder (NULL)&#xa;issue_date (DATE)&#xa;total (DECIMAL)&#xa;retainage (DECIMAL)&#xa;status (ENUM)&#xa;type (ENUM)" style="shape=rectangle;whiteSpace=wrap;html=1;rounded=0;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="1260" y="640" width="300" height="220" as="geometry"/>
+        </mxCell>
+        <mxCell id="payment" value="Payment&#xa;PK: payment_id (UUID)&#xa;FK: invoice_id → Invoice&#xa;amount (DECIMAL)&#xa;paid_on (DATE)&#xa;method (TEXT)&#xa;txn_ref (TEXT)" style="shape=rectangle;whiteSpace=wrap;html=1;rounded=0;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="1570" y="640" width="260" height="180" as="geometry"/>
+        </mxCell>
+
+        <!-- Left-middle (Locations) -->
+        <mxCell id="address" value="Address&#xa;PK: address_id (UUID)&#xa;line1 (TEXT)&#xa;city (TEXT)&#xa;state (TEXT)&#xa;postal (TEXT)&#xa;country (TEXT)" style="shape=rectangle;whiteSpace=wrap;html=1;rounded=0;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="100" y="460" width="240" height="200" as="geometry"/>
+        </mxCell>
+        <mxCell id="site" value="Site&#xa;PK: site_id (UUID)&#xa;FK: project_id → Project&#xa;FK: address_id → Address&#xa;name (TEXT)&#xa;latitude (DECIMAL)&#xa;longitude (DECIMAL)" style="shape=rectangle;whiteSpace=wrap;html=1;rounded=0;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="380" y="460" width="260" height="200" as="geometry"/>
+        </mxCell>
+
+        <!-- Aggregation Note -->
+        <mxCell id="agg_note" value="Aggregation: WorkPackage aggregates Tasks." style="shape=note;whiteSpace=wrap;html=1;size=12;fillColor=#fff2a8;strokeColor=#c9b458;" vertex="1" parent="1">
+          <mxGeometry x="850" y="20" width="260" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- Relationships & Cardinalities (Orthogonal, Crow's Foot) -->
+        
+        <!-- Core -->
+        <mxCell id="r_project_masterbudget" edge="1" parent="1" source="project" target="masterbudget" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;startArrow=ERone;endArrow=ERone;startFill=0;endFill=0;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="r_project_workpackage" edge="1" parent="1" source="project" target="workpackage" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;startArrow=ERone;endArrow=ERoneToMany;startFill=0;endFill=0;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="r_workpackage_task" edge="1" parent="1" source="workpackage" target="task" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;startArrow=ERone;endArrow=ERoneToMany;startFill=0;endFill=0;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="r_project_milestone" edge="1" parent="1" source="project" target="milestone" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;startArrow=ERone;endArrow=ERoneToMany;startFill=0;endFill=0;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="r_project_site" edge="1" parent="1" source="project" target="site" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;startArrow=ERone;endArrow=ERoneToMany;startFill=0;endFill=0;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="r_site_inspection" edge="1" parent="1" source="site" target="inspection" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;startArrow=ERone;endArrow=ERoneToMany;startFill=0;endFill=0;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <!-- Task recursive depends_on: M (start) to 1 (end) -->
+        <mxCell id="r_task_depends_on" value="depends_on" edge="1" parent="1" source="task" target="task" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;startArrow=ERmany;endArrow=ERone;startFill=0;endFill=0;loopDirection=west;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="930" y="160" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Organizations / Contracts -->
+        <mxCell id="r_project_contract" edge="1" parent="1" source="project" target="contract" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;startArrow=ERone;endArrow=ERoneToMany;startFill=0;endFill=0;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="r_subcontractor_contract" edge="1" parent="1" source="subcontractor" target="contract" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;startArrow=ERone;endArrow=ERoneToMany;startFill=0;endFill=0;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="r_contract_changeorder" edge="1" parent="1" source="contract" target="changeorder" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;startArrow=ERone;endArrow=ERoneToMany;startFill=0;endFill=0;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Procurement -->
+        <mxCell id="r_project_po" edge="1" parent="1" source="project" target="purchaseorder" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;startArrow=ERone;endArrow=ERoneToMany;startFill=0;endFill=0;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="r_supplier_po" edge="1" parent="1" source="supplier" target="purchaseorder" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;startArrow=ERone;endArrow=ERoneToMany;startFill=0;endFill=0;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="r_po_polineitem" edge="1" parent="1" source="purchaseorder" target="polineitem" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;startArrow=ERone;endArrow=ERoneToMany;startFill=0;endFill=0;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="r_material_polineitem" edge="1" parent="1" source="material" target="polineitem" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;startArrow=ERone;endArrow=ERoneToMany;startFill=0;endFill=0;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <!-- Task M—N Material via TaskMaterial -->
+        <mxCell id="r_task_taskmaterial" edge="1" parent="1" source="task" target="taskmaterial" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;startArrow=ERoneToMany;endArrow=ERone;startFill=0;endFill=0;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="r_material_taskmaterial" edge="1" parent="1" source="material" target="taskmaterial" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;startArrow=ERoneToMany;endArrow=ERone;startFill=0;endFill=0;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Labor & Equipment -->
+        <mxCell id="r_employee_timesheet" edge="1" parent="1" source="employee" target="timesheet" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;startArrow=ERone;endArrow=ERoneToMany;startFill=0;endFill=0;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="r_task_timesheet" edge="1" parent="1" source="task" target="timesheet" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;startArrow=ERone;endArrow=ERoneToMany;startFill=0;endFill=0;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="r_costcode_timesheet" edge="1" parent="1" source="costcode" target="timesheet" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;startArrow=ERone;endArrow=ERoneToMany;startFill=0;endFill=0;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <!-- Task M—N Equipment via TaskEquipment -->
+        <mxCell id="r_task_taskequipment" edge="1" parent="1" source="task" target="taskequipment" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;startArrow=ERoneToMany;endArrow=ERone;startFill=0;endFill=0;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="r_equipment_taskequipment" edge="1" parent="1" source="equipment" target="taskequipment" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;startArrow=ERoneToMany;endArrow=ERone;startFill=0;endFill=0;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Finance -->
+        <mxCell id="r_contract_invoice" edge="1" parent="1" source="contract" target="invoice" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;startArrow=ERone;endArrow=ERoneToMany;startFill=0;endFill=0;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="r_po_invoice" edge="1" parent="1" source="purchaseorder" target="invoice" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;startArrow=ERone;endArrow=ERoneToMany;startFill=0;endFill=0;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="r_invoice_payment" edge="1" parent="1" source="invoice" target="payment" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;startArrow=ERone;endArrow=ERoneToMany;startFill=0;endFill=0;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Field Control / Docs relationships -->
+        <mxCell id="r_project_rfi" edge="1" parent="1" source="project" target="rfi" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;startArrow=ERone;endArrow=ERoneToMany;startFill=0;endFill=0;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="r_task_rfi" edge="1" parent="1" source="task" target="rfi" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;startArrow=ERzeroToOne;endArrow=ERoneToMany;startFill=0;endFill=0;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="r_project_issue" edge="1" parent="1" source="project" target="issue" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;startArrow=ERone;endArrow=ERoneToMany;startFill=0;endFill=0;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="r_task_issue" edge="1" parent="1" source="task" target="issue" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;startArrow=ERzeroToOne;endArrow=ERoneToMany;startFill=0;endFill=0;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="r_project_permit" edge="1" parent="1" source="project" target="permit" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;startArrow=ERone;endArrow=ERoneToMany;startFill=0;endFill=0;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="r_project_document" edge="1" parent="1" source="project" target="document" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;startArrow=ERone;endArrow=ERoneToMany;startFill=0;endFill=0;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="r_task_document" edge="1" parent="1" source="task" target="document" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;startArrow=ERzeroToOne;endArrow=ERoneToMany;startFill=0;endFill=0;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="r_inspection_document" edge="1" parent="1" source="inspection" target="document" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;startArrow=ERzeroToOne;endArrow=ERoneToMany;startFill=0;endFill=0;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="r_rfi_document" edge="1" parent="1" source="rfi" target="document" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;startArrow=ERzeroToOne;endArrow=ERoneToMany;startFill=0;endFill=0;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Locations -->
+        <mxCell id="r_address_site" edge="1" parent="1" source="address" target="site" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;startArrow=ERone;endArrow=ERoneToMany;startFill=0;endFill=0;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
