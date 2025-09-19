@@ -1,0 +1,255 @@
+<mxGraphModel dx="2400" dy="1600" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="4000" pageHeight="2400" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        
+
+        
+        <mxCell id="project" value="&lt;b&gt;Project&lt;/b&gt;&lt;br/&gt;&lt;b&gt;PK&lt;/b&gt;: project_id&lt;br/&gt;&lt;b&gt;Attrs&lt;/b&gt;: name (text), start_date (date), end_date (date), status (enum)" style="rounded=0;whiteSpace=wrap;html=1;shadow=0;strokeColor=#000000;fillColor=#FFFFFF;fontSize=12;align=left;verticalAlign=top;spacing=6;" vertex="1" parent="1">
+          <mxGeometry x="600" y="60" width="260" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="masterbudget" value="&lt;b&gt;MasterBudget&lt;/b&gt;&lt;br/&gt;&lt;b&gt;PK&lt;/b&gt;: budget_id&lt;br/&gt;&lt;b&gt;FK&lt;/b&gt;: project_id → Project (UNIQUE)&lt;br/&gt;&lt;b&gt;Attrs&lt;/b&gt;: baseline_total (decimal), currency (text), active (bool)" style="rounded=0;whiteSpace=wrap;html=1;shadow=0;strokeColor=#000000;fillColor=#FFFFFF;fontSize=12;align=left;verticalAlign=top;spacing=6;" vertex="1" parent="1">
+          <mxGeometry x="950" y="60" width="260" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="workpackage" value="&lt;b&gt;WorkPackage&lt;/b&gt;&lt;br/&gt;&lt;b&gt;PK&lt;/b&gt;: wp_id&lt;br/&gt;&lt;b&gt;FK&lt;/b&gt;: project_id → Project&lt;br/&gt;&lt;b&gt;Attrs&lt;/b&gt;: name (text), planned_value (decimal)" style="rounded=0;whiteSpace=wrap;html=1;shadow=0;strokeColor=#000000;fillColor=#FFFFFF;fontSize=12;align=left;verticalAlign=top;spacing=6;" vertex="1" parent="1">
+          <mxGeometry x="1400" y="60" width="260" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="task" value="&lt;b&gt;Task&lt;/b&gt;&lt;br/&gt;&lt;b&gt;PK&lt;/b&gt;: task_id&lt;br/&gt;&lt;b&gt;FK&lt;/b&gt;: wp_id → WorkPackage; predecessor_task_id → Task (NULL)&lt;br/&gt;&lt;b&gt;Attrs&lt;/b&gt;: name (text), planned_start (date), planned_finish (date), percent_complete (int)" style="rounded=0;whiteSpace=wrap;html=1;shadow=0;strokeColor=#000000;fillColor=#FFFFFF;fontSize=12;align=left;verticalAlign=top;spacing=6;" vertex="1" parent="1">
+          <mxGeometry x="1850" y="60" width="300" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="milestone" value="&lt;b&gt;Milestone&lt;/b&gt;&lt;br/&gt;&lt;b&gt;PK&lt;/b&gt;: milestone_id&lt;br/&gt;&lt;b&gt;FK&lt;/b&gt;: project_id → Project&lt;br/&gt;&lt;b&gt;Attrs&lt;/b&gt;: name (text), target_date (date), is_critical (bool)" style="rounded=0;whiteSpace=wrap;html=1;shadow=0;strokeColor=#000000;fillColor=#FFFFFF;fontSize=12;align=left;verticalAlign=top;spacing=6;" vertex="1" parent="1">
+          <mxGeometry x="2300" y="60" width="260" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="costcode" value="&lt;b&gt;CostCode&lt;/b&gt;&lt;br/&gt;&lt;b&gt;PK&lt;/b&gt;: costcode_id&lt;br/&gt;&lt;b&gt;FK&lt;/b&gt;: project_id → Project; parent_costcode_id → CostCode (NULL)&lt;br/&gt;&lt;b&gt;Attrs&lt;/b&gt;: code (text), description (text)" style="rounded=0;whiteSpace=wrap;html=1;shadow=0;strokeColor=#000000;fillColor=#FFFFFF;fontSize=12;align=left;verticalAlign=top;spacing=6;" vertex="1" parent="1">
+          <mxGeometry x="2750" y="60" width="300" height="180" as="geometry" />
+        </mxCell>
+
+        
+        <mxCell id="company" value="&lt;b&gt;Company&lt;/b&gt;&lt;br/&gt;&lt;b&gt;PK&lt;/b&gt;: company_id&lt;br/&gt;&lt;b&gt;Attrs&lt;/b&gt;: legal_name (text), type (text), tax_id (text)" style="rounded=0;whiteSpace=wrap;html=1;shadow=0;strokeColor=#000000;fillColor=#FFFFFF;fontSize=12;align=left;verticalAlign=top;spacing=6;" vertex="1" parent="1">
+          <mxGeometry x="60" y="200" width="260" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="clientcompany" value="&lt;b&gt;ClientCompany&lt;/b&gt;&lt;br/&gt;&lt;b&gt;PK/FK&lt;/b&gt;: company_id → Company&lt;br/&gt;&lt;b&gt;Attrs&lt;/b&gt;: billing_contact (text)" style="rounded=0;whiteSpace=wrap;html=1;shadow=0;strokeColor=#000000;fillColor=#FFFFFF;fontSize=12;align=left;verticalAlign=top;spacing=6;" vertex="1" parent="1">
+          <mxGeometry x="60" y="380" width="260" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="subcontractor" value="&lt;b&gt;Subcontractor&lt;/b&gt;&lt;br/&gt;&lt;b&gt;PK/FK&lt;/b&gt;: company_id → Company&lt;br/&gt;&lt;b&gt;Attrs&lt;/b&gt;: trade (text), insurance_expiry (date)" style="rounded=0;whiteSpace=wrap;html=1;shadow=0;strokeColor=#000000;fillColor=#FFFFFF;fontSize=12;align=left;verticalAlign=top;spacing=6;" vertex="1" parent="1">
+          <mxGeometry x="60" y="540" width="260" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="supplier" value="&lt;b&gt;Supplier&lt;/b&gt;&lt;br/&gt;&lt;b&gt;PK/FK&lt;/b&gt;: company_id → Company&lt;br/&gt;&lt;b&gt;Attrs&lt;/b&gt;: catalog_url (text), preferred (bool)" style="rounded=0;whiteSpace=wrap;html=1;shadow=0;strokeColor=#000000;fillColor=#FFFFFF;fontSize=12;align=left;verticalAlign=top;spacing=6;" vertex="1" parent="1">
+          <mxGeometry x="60" y="700" width="260" height="130" as="geometry" />
+        </mxCell>
+
+        
+        <mxCell id="address" value="&lt;b&gt;Address&lt;/b&gt;&lt;br/&gt;&lt;b&gt;PK&lt;/b&gt;: address_id&lt;br/&gt;&lt;b&gt;Attrs&lt;/b&gt;: line1, city, state, postal, country" style="rounded=0;whiteSpace=wrap;html=1;shadow=0;strokeColor=#000000;fillColor=#FFFFFF;fontSize=12;align=left;verticalAlign=top;spacing=6;" vertex="1" parent="1">
+          <mxGeometry x="350" y="380" width="260" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="site" value="&lt;b&gt;Site&lt;/b&gt;&lt;br/&gt;&lt;b&gt;PK&lt;/b&gt;: site_id&lt;br/&gt;&lt;b&gt;FK&lt;/b&gt;: project_id → Project; address_id → Address&lt;br/&gt;&lt;b&gt;Attrs&lt;/b&gt;: name (text), latitude (num), longitude (num)" style="rounded=0;whiteSpace=wrap;html=1;shadow=0;strokeColor=#000000;fillColor=#FFFFFF;fontSize=12;align=left;verticalAlign=top;spacing=6;" vertex="1" parent="1">
+          <mxGeometry x="350" y="540" width="300" height="160" as="geometry" />
+        </mxCell>
+
+        
+        <mxCell id="contract" value="&lt;b&gt;Contract&lt;/b&gt;&lt;br/&gt;&lt;b&gt;PK&lt;/b&gt;: contract_id&lt;br/&gt;&lt;b&gt;FKs&lt;/b&gt;: project_id → Project; subcontractor_id → Company(Subcontractor) (NULL); client_id → Company(ClientCompany) (NULL)&lt;br/&gt;&lt;b&gt;Attrs&lt;/b&gt;: value (decimal), retainage_pct (pct), status (text)" style="rounded=0;whiteSpace=wrap;html=1;shadow=0;strokeColor=#000000;fillColor=#FFFFFF;fontSize=12;align=left;verticalAlign=top;spacing=6;" vertex="1" parent="1">
+          <mxGeometry x="1200" y="540" width="360" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="changeorder" value="&lt;b&gt;ChangeOrder&lt;/b&gt;&lt;br/&gt;&lt;b&gt;PK&lt;/b&gt;: co_id&lt;br/&gt;&lt;b&gt;FK&lt;/b&gt;: contract_id → Contract; wp_id → WorkPackage (NULL)&lt;br/&gt;&lt;b&gt;Attrs&lt;/b&gt;: amount (decimal), schedule_days (int), reason (text), status (text)" style="rounded=0;whiteSpace=wrap;html=1;shadow=0;strokeColor=#000000;fillColor=#FFFFFF;fontSize=12;align=left;verticalAlign=top;spacing=6;" vertex="1" parent="1">
+          <mxGeometry x="1600" y="540" width="360" height="180" as="geometry" />
+        </mxCell>
+
+        
+        <mxCell id="purchaseorder" value="&lt;b&gt;PurchaseOrder&lt;/b&gt;&lt;br/&gt;&lt;b&gt;PK&lt;/b&gt;: po_id&lt;br/&gt;&lt;b&gt;FK&lt;/b&gt;: project_id → Project; supplier_id → Company(Supplier)&lt;br/&gt;&lt;b&gt;Attrs&lt;/b&gt;: ordered_on (date), status (text), total (decimal)" style="rounded=0;whiteSpace=wrap;html=1;shadow=0;strokeColor=#000000;fillColor=#FFFFFF;fontSize=12;align=left;verticalAlign=top;spacing=6;" vertex="1" parent="1">
+          <mxGeometry x="2200" y="700" width="320" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="polineitem" value="&lt;b&gt;POLineItem&lt;/b&gt; (weak/assoc)&lt;br/&gt;&lt;b&gt;PK&lt;/b&gt;: po_id + line_no&lt;br/&gt;&lt;b&gt;FKs&lt;/b&gt;: po_id → PurchaseOrder; material_id → Material; costcode_id → CostCode&lt;br/&gt;&lt;b&gt;Attrs&lt;/b&gt;: qty (num), unit_price (decimal), description (text)" style="rounded=0;whiteSpace=wrap;html=1;shadow=0;strokeColor=#000000;dashed=1;fillColor=#FFFFFF;fontSize=12;align=left;verticalAlign=top;spacing=6;" vertex="1" parent="1">
+          <mxGeometry x="2600" y="700" width="360" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="material" value="&lt;b&gt;Material&lt;/b&gt;&lt;br/&gt;&lt;b&gt;PK&lt;/b&gt;: material_id&lt;br/&gt;&lt;b&gt;Attrs&lt;/b&gt;: name (text), unit (text), spec_no (text), requires_submittal (bool)" style="rounded=0;whiteSpace=wrap;html=1;shadow=0;strokeColor=#000000;fillColor=#FFFFFF;fontSize=12;align=left;verticalAlign=top;spacing=6;" vertex="1" parent="1">
+          <mxGeometry x="3000" y="700" width="320" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="taskmaterial" value="&lt;b&gt;TaskMaterial&lt;/b&gt; (weak/assoc)&lt;br/&gt;&lt;b&gt;PK&lt;/b&gt;: task_id + material_id&lt;br/&gt;&lt;b&gt;FKs&lt;/b&gt;: task_id → Task; material_id → Material&lt;br/&gt;&lt;b&gt;Attrs&lt;/b&gt;: qty_used (num), date_used (date)" style="rounded=0;whiteSpace=wrap;html=1;shadow=0;strokeColor=#000000;dashed=1;fillColor=#FFFFFF;fontSize=12;align=left;verticalAlign=top;spacing=6;" vertex="1" parent="1">
+          <mxGeometry x="2600" y="950" width="360" height="160" as="geometry" />
+        </mxCell>
+
+        
+        <mxCell id="employee" value="&lt;b&gt;Employee&lt;/b&gt;&lt;br/&gt;&lt;b&gt;PK&lt;/b&gt;: employee_id&lt;br/&gt;&lt;b&gt;FK&lt;/b&gt;: company_id → Company&lt;br/&gt;&lt;b&gt;Attrs&lt;/b&gt;: first_name (text), last_name (text), role (text)" style="rounded=0;whiteSpace=wrap;html=1;shadow=0;strokeColor=#000000;fillColor=#FFFFFF;fontSize=12;align=left;verticalAlign=top;spacing=6;" vertex="1" parent="1">
+          <mxGeometry x="600" y="950" width="300" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="timesheet" value="&lt;b&gt;Timesheet&lt;/b&gt;&lt;br/&gt;&lt;b&gt;PK&lt;/b&gt;: timesheet_id&lt;br/&gt;&lt;b&gt;FKs&lt;/b&gt;: employee_id → Employee; task_id → Task; costcode_id → CostCode; approved_by → Employee&lt;br/&gt;&lt;b&gt;Attrs&lt;/b&gt;: work_date (date), hours (num)" style="rounded=0;whiteSpace=wrap;html=1;shadow=0;strokeColor=#000000;fillColor=#FFFFFF;fontSize=12;align=left;verticalAlign=top;spacing=6;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="950" width="360" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="equipment" value="&lt;b&gt;Equipment&lt;/b&gt;&lt;br/&gt;&lt;b&gt;PK&lt;/b&gt;: equipment_id&lt;br/&gt;&lt;b&gt;Attrs&lt;/b&gt;: name (text), owner ENUM('Owned','Rented'), daily_rate (decimal), status (text)" style="rounded=0;whiteSpace=wrap;html=1;shadow=0;strokeColor=#000000;fillColor=#FFFFFF;fontSize=12;align=left;verticalAlign=top;spacing=6;" vertex="1" parent="1">
+          <mxGeometry x="1400" y="950" width="360" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="taskequipment" value="&lt;b&gt;TaskEquipment&lt;/b&gt; (weak/assoc)&lt;br/&gt;&lt;b&gt;PK&lt;/b&gt;: task_id + equipment_id&lt;br/&gt;&lt;b&gt;FKs&lt;/b&gt;: task_id → Task; equipment_id → Equipment&lt;br/&gt;&lt;b&gt;Attrs&lt;/b&gt;: assigned_from (date), assigned_to (date)" style="rounded=0;whiteSpace=wrap;html=1;shadow=0;strokeColor=#000000;dashed=1;fillColor=#FFFFFF;fontSize=12;align=left;verticalAlign=top;spacing=6;" vertex="1" parent="1">
+          <mxGeometry x="1850" y="950" width="360" height="160" as="geometry" />
+        </mxCell>
+
+        
+        <mxCell id="inspection" value="&lt;b&gt;Inspection&lt;/b&gt;&lt;br/&gt;&lt;b&gt;PK&lt;/b&gt;: inspection_id&lt;br/&gt;&lt;b&gt;FKs&lt;/b&gt;: project_id → Project; site_id → Site; task_id → Task (NULL)&lt;br/&gt;&lt;b&gt;Attrs&lt;/b&gt;: type (text), result (text), date (date)" style="rounded=0;whiteSpace=wrap;html=1;shadow=0;strokeColor=#000000;fillColor=#FFFFFF;fontSize=12;align=left;verticalAlign=top;spacing=6;" vertex="1" parent="1">
+          <mxGeometry x="900" y="360" width="360" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="issue" value="&lt;b&gt;Issue&lt;/b&gt;&lt;br/&gt;&lt;b&gt;PK&lt;/b&gt;: issue_id&lt;br/&gt;&lt;b&gt;FKs&lt;/b&gt;: project_id → Project; task_id → Task (NULL); site_id → Site (NULL)&lt;br/&gt;&lt;b&gt;Attrs&lt;/b&gt;: severity (text), opened_on (date), closed_on (date NULL), status (text)" style="rounded=0;whiteSpace=wrap;html=1;shadow=0;strokeColor=#000000;fillColor=#FFFFFF;fontSize=12;align=left;verticalAlign=top;spacing=6;" vertex="1" parent="1">
+          <mxGeometry x="1450" y="360" width="380" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="rfi" value="&lt;b&gt;RFI&lt;/b&gt;&lt;br/&gt;&lt;b&gt;PK&lt;/b&gt;: rfi_id&lt;br/&gt;&lt;b&gt;FKs&lt;/b&gt;: project_id → Project; task_id → Task (NULL); raised_by → Employee&lt;br/&gt;&lt;b&gt;Attrs&lt;/b&gt;: question (text), response (text), status (text)" style="rounded=0;whiteSpace=wrap;html=1;shadow=0;strokeColor=#000000;fillColor=#FFFFFF;fontSize=12;align=left;verticalAlign=top;spacing=6;" vertex="1" parent="1">
+          <mxGeometry x="1900" y="360" width="360" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="document" value="&lt;b&gt;Document&lt;/b&gt;&lt;br/&gt;&lt;b&gt;PK&lt;/b&gt;: document_id&lt;br/&gt;&lt;b&gt;FKs&lt;/b&gt;: project_id → Project; task_id → Task (NULL); inspection_id → Inspection (NULL); rfi_id → RFI (NULL)&lt;br/&gt;&lt;b&gt;Attrs&lt;/b&gt;: title (text), doc_type (text), version (text), current (bool), file_uri (text)" style="rounded=0;whiteSpace=wrap;html=1;shadow=0;strokeColor=#000000;fillColor=#FFFFFF;fontSize=12;align=left;verticalAlign=top;spacing=6;" vertex="1" parent="1">
+          <mxGeometry x="2350" y="360" width="420" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="permit" value="&lt;b&gt;Permit&lt;/b&gt;&lt;br/&gt;&lt;b&gt;PK&lt;/b&gt;: permit_id&lt;br/&gt;&lt;b&gt;FKs&lt;/b&gt;: project_id → Project; site_id → Site (NULL); task_id → Task (NULL)&lt;br/&gt;&lt;b&gt;Attrs&lt;/b&gt;: authority (text), number (text), issued_on (date), expires_on (date), status (text)" style="rounded=0;whiteSpace=wrap;html=1;shadow=0;strokeColor=#000000;fillColor=#FFFFFF;fontSize=12;align=left;verticalAlign=top;spacing=6;" vertex="1" parent="1">
+          <mxGeometry x="2800" y="360" width="420" height="200" as="geometry" />
+        </mxCell>
+
+        
+        <mxCell id="invoice" value="&lt;b&gt;Invoice&lt;/b&gt;&lt;br/&gt;&lt;b&gt;PK&lt;/b&gt;: invoice_id&lt;br/&gt;&lt;b&gt;FK&lt;/b&gt;: contract_id → Contract (NULL); po_id → PurchaseOrder (NULL)&lt;br/&gt;&lt;b&gt;Attrs&lt;/b&gt;: issue_date (date), total (decimal), retainage (decimal), status (text), type (text)" style="rounded=0;whiteSpace=wrap;html=1;shadow=0;strokeColor=#000000;fillColor=#FFFFFF;fontSize=12;align=left;verticalAlign=top;spacing=6;" vertex="1" parent="1">
+          <mxGeometry x="2400" y="1200" width="420" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="payment" value="&lt;b&gt;Payment&lt;/b&gt;&lt;br/&gt;&lt;b&gt;PK&lt;/b&gt;: payment_id&lt;br/&gt;&lt;b&gt;FK&lt;/b&gt;: invoice_id → Invoice&lt;br/&gt;&lt;b&gt;Attrs&lt;/b&gt;: amount (decimal), paid_on (date), method (text), txn_ref (text)" style="rounded=0;whiteSpace=wrap;html=1;shadow=0;strokeColor=#000000;fillColor=#FFFFFF;fontSize=12;align=left;verticalAlign=top;spacing=6;" vertex="1" parent="1">
+          <mxGeometry x="2850" y="1200" width="340" height="160" as="geometry" />
+        </mxCell>
+
+        
+        <mxCell id="agg_note" value="Aggregation: WorkPackage aggregates Tasks." style="shape=note;whiteSpace=wrap;html=1;fillColor=#FFF2B6;strokeColor=#E5C365;fontSize=12;align=left;verticalAlign=top;spacing=6;" vertex="1" parent="1">
+          <mxGeometry x="1650" y="260" width="280" height="60" as="geometry" />
+        </mxCell>
+
+        
+        <mxCell id="isa_client" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startArrow=none;endArrow=block;endFill=0;endSize=14;" source="company" target="clientcompany">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="isa_sub" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startArrow=none;endArrow=block;endFill=0;endSize=14;" source="company" target="subcontractor">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="isa_sup" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startArrow=none;endArrow=block;endFill=0;endSize=14;" source="company" target="supplier">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        
+        
+        <mxCell id="rel_project_masterbudget" edge="1" parent="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;startArrow=ERone;startFill=1;endArrow=ERone;endFill=1;" source="project" target="masterbudget">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel_project_workpackage" edge="1" parent="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;startArrow=ERone;startFill=1;endArrow=ERmany;endFill=1;" source="project" target="workpackage">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel_workpackage_task" edge="1" parent="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;startArrow=ERone;startFill=1;endArrow=ERmany;endFill=1;" source="workpackage" target="task">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel_project_milestone" edge="1" parent="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;startArrow=ERone;startFill=1;endArrow=ERmany;endFill=1;" source="project" target="milestone">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel_project_site" edge="1" parent="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;startArrow=ERone;startFill=1;endArrow=ERmany;endFill=1;" source="project" target="site">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel_site_inspection" edge="1" parent="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;startArrow=ERone;startFill=1;endArrow=ERmany;endFill=1;" source="site" target="inspection">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="rel_task_depends" edge="1" parent="1" value="depends_on" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;loopStyle=1;orthogonalLoop=1;startArrow=ERmany;startFill=1;endArrow=ERone;endFill=1;" source="task" target="task">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="2000" y="260" as="sourcePoint" />
+            <mxPoint x="2100" y="260" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        
+        <mxCell id="rel_project_contract" edge="1" parent="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;startArrow=ERone;startFill=1;endArrow=ERmany;endFill=1;" source="project" target="contract">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel_subcontractor_contract" edge="1" parent="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;startArrow=ERone;startFill=1;endArrow=ERmany;endFill=1;" source="subcontractor" target="contract">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel_contract_changeorder" edge="1" parent="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;startArrow=ERone;startFill=1;endArrow=ERmany;endFill=1;" source="contract" target="changeorder">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        
+        <mxCell id="rel_project_po" edge="1" parent="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;startArrow=ERone;startFill=1;endArrow=ERmany;endFill=1;" source="project" target="purchaseorder">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel_supplier_po" edge="1" parent="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;startArrow=ERone;startFill=1;endArrow=ERmany;endFill=1;" source="supplier" target="purchaseorder">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel_po_poline" edge="1" parent="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;startArrow=ERone;startFill=1;endArrow=ERmany;endFill=1;" source="purchaseorder" target="polineitem">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel_material_poline" edge="1" parent="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;startArrow=ERone;startFill=1;endArrow=ERmany;endFill=1;" source="material" target="polineitem">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="rel_task_taskmaterial" edge="1" parent="1" value="via" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;startArrow=ERmany;startFill=1;endArrow=ERmany;endFill=1;" source="task" target="taskmaterial">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel_material_taskmaterial" edge="1" parent="1" value="via" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;startArrow=ERmany;startFill=1;endArrow=ERmany;endFill=1;" source="material" target="taskmaterial">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        
+        <mxCell id="rel_employee_timesheet" edge="1" parent="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;startArrow=ERone;startFill=1;endArrow=ERmany;endFill=1;" source="employee" target="timesheet">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel_task_timesheet" edge="1" parent="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;startArrow=ERone;startFill=1;endArrow=ERmany;endFill=1;" source="task" target="timesheet">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel_costcode_timesheet" edge="1" parent="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;startArrow=ERone;startFill=1;endArrow=ERmany;endFill=1;" source="costcode" target="timesheet">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="rel_task_taskequipment" edge="1" parent="1" value="via" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;startArrow=ERmany;startFill=1;endArrow=ERmany;endFill=1;" source="task" target="taskequipment">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel_equipment_taskequipment" edge="1" parent="1" value="via" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;startArrow=ERmany;startFill=1;endArrow=ERmany;endFill=1;" source="equipment" target="taskequipment">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        
+        <mxCell id="rel_contract_invoice" edge="1" parent="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;startArrow=ERone;startFill=1;endArrow=ERmany;endFill=1;" source="contract" target="invoice">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel_po_invoice" edge="1" parent="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;startArrow=ERone;startFill=1;endArrow=ERmany;endFill=1;" source="purchaseorder" target="invoice">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel_invoice_payment" edge="1" parent="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;startArrow=ERone;startFill=1;endArrow=ERmany;endFill=1;" source="invoice" target="payment">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        
+        <mxCell id="rel_project_rfi" edge="1" parent="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;startArrow=ERone;startFill=1;endArrow=ERmany;endFill=1;" source="project" target="rfi">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel_task_rfi" edge="1" parent="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;startArrow=ERzero;startFill=1;endArrow=ERmany;endFill=1;" source="task" target="rfi">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="rel_project_issue" edge="1" parent="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;startArrow=ERone;startFill=1;endArrow=ERmany;endFill=1;" source="project" target="issue">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel_task_issue" edge="1" parent="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;startArrow=ERzero;startFill=1;endArrow=ERmany;endFill=1;" source="task" target="issue">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="rel_project_permit" edge="1" parent="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;startArrow=ERone;startFill=1;endArrow=ERmany;endFill=1;" source="project" target="permit">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="rel_project_document" edge="1" parent="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;startArrow=ERone;startFill=1;endArrow=ERmany;endFill=1;" source="project" target="document">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel_task_document" edge="1" parent="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;startArrow=ERzero;startFill=1;endArrow=ERmany;endFill=1;" source="task" target="document">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel_inspection_document" edge="1" parent="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;startArrow=ERzero;startFill=1;endArrow=ERmany;endFill=1;" source="inspection" target="document">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel_rfi_document" edge="1" parent="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;startArrow=ERzero;startFill=1;endArrow=ERmany;endFill=1;" source="rfi" target="document">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        
+        <mxCell id="rel_address_site" edge="1" parent="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;startArrow=ERone;startFill=1;endArrow=ERmany;endFill=1;" source="address" target="site">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  
